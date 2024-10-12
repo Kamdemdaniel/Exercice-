@@ -1,0 +1,69 @@
+/* bonjour il est question pour nous decrire un programme c++ qui determine
+le cosinus le sinus ou la tangente selon les besoins de lutilisateur
+pour cela nous avons besoin de 4 fonctions!
+*/
+#include<iostream>
+// ce code represente notre fonction factoriel qui nous permet de determiner le factoriel
+double factoriel(double n)
+{
+double i=1;
+double fact=1.0;
+ for(i=1;i<=n;i++){
+    fact=fact*i;
+ }
+    return fact;
+}
+// cette fonction a ete appeler puis elle determine la puissance d'un nombre
+double puis(double nbrA,double n){
+double p=1.0;
+for(int i=1;i<=n;i++){
+p=p*nbrA;
+}
+
+    return p;
+}
+//celle-ci c'est pour le cosinus 
+double cosinus(double x){
+double cosi;
+   
+cosi = 1-(puis(x,2)/factoriel(2))+(puis(x,4)/factoriel(4))-(puis(x,6)/factoriel(6))+(puis(x,8)/factoriel(8))-(puis(x,10)/factoriel(10));
+return cosi;
+}
+// ici le sinus
+double sinus(double x)
+{
+double si;
+si = x-(puis(x,3)/factoriel(3))+(puis(x,5)/factoriel(5))-(puis(x,7)/factoriel(7))+(puis(x,9)/factoriel(9));
+    return si;
+}
+// et celle-ci la tangente
+double tangente(double n)
+{
+    double tang;
+    tang= sinus(n)/cosinus(n);
+    return tang;
+}
+// et en fin notre fonction principale main
+int main(int argc,char**argv){
+    double  sol1,sol2,n;
+    double sol, deci;
+    std::cout<<"entrer un nombre";
+    std::cin>>n;
+    n=n*0.0175;
+    std::cout<<"que voulez vous connaitre de ce nombre?\n 1)son cosinus\n 2)son sinus\n 3) sa tangente";
+   std::cin>>deci;
+    sol=cosinus(n);
+    sol1=sinus(n);
+    sol2=tangente(n);
+    if(deci==1)
+    {
+    std::cout<<"le cos est:\n"<<sol;
+    }  else if(deci==2)
+    {
+    std::cout<<"le sin est:\n"<<sol1;
+    }else
+    {
+    std::cout<<"la tangente  est:\n"<<sol2;
+    }
+    return 0;
+}
